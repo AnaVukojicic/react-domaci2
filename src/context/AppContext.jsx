@@ -1,11 +1,11 @@
-import { createContext, useContext, useState } from "react";
-import { listOfUsers } from "../../constants/constants";
-import useDebounce from "../../hooks/useDebounce";
+import { createContext, useContext, useRef, useState } from "react";
+import { listOfUsers } from "../constants/constants";
 
 const AppContext=createContext();
 
 const AppProvider=({children})=>{
     const [selectedMovie,setSelectedMovie]=useState(null);
+    const usersDivRef=useRef(null);
 
     const onMovieSelect=(movieData)=>{
         const {id:movieId}=movieData;
@@ -20,7 +20,8 @@ const AppProvider=({children})=>{
 
     const data={
         selectedMovie:selectedMovie,
-        setSelectedMovie:(e)=>onMovieSelect(e)
+        setSelectedMovie:(e)=>onMovieSelect(e),
+        usersDivRef:usersDivRef
     }
 
     return(
