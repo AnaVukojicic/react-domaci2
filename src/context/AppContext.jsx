@@ -5,7 +5,7 @@ const AppContext=createContext();
 
 const AppProvider=({children})=>{
     const [selectedMovie,setSelectedMovie]=useState(null);
-    const usersDivRef=useRef(null);
+    const [showUsers,setShowUsers]=useState(false);
 
     const onMovieSelect=(movieData)=>{
         const {id:movieId}=movieData;
@@ -21,7 +21,8 @@ const AppProvider=({children})=>{
     const data={
         selectedMovie:selectedMovie,
         setSelectedMovie:(e)=>onMovieSelect(e),
-        usersDivRef:usersDivRef
+        showUsers:showUsers,
+        setShowUsers:setShowUsers
     }
 
     return(

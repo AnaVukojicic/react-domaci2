@@ -7,7 +7,7 @@ import TableComponent from "../table/Table";
 import './SelectedMovie.css';
 
 const SelectedMovie=()=>{
-    const {selectedMovie,usersDivRef}=useAppData();
+    const {selectedMovie,setShowUsers,showUsers}=useAppData();
     const [query,setQuery]=useState('');
     const [list,setList]=useState([]);
     const [sortedInfo, setSortedInfo] = useState({});
@@ -69,9 +69,10 @@ const SelectedMovie=()=>{
         setSortedInfo(sorter);
     }
 
-    const showUsers=()=>{
-        usersDivRef.current.style.display='block';
+    const changeShowUsers=()=>{
+        setShowUsers(true);
     }
+
 
     return(
         <div className="selected-container">
@@ -82,12 +83,14 @@ const SelectedMovie=()=>{
                                 genre={selectedMovie.genre} 
                                 image={selectedMovie.image}
                                 actors={selectedMovie.actors}
-                                showUsers={showUsers}
+                                showUsers={changeShowUsers}
                     />
-                    <div ref={usersDivRef} style={{display:'none'}}>
+                    {showUsers &&
+                        <div>
                         <SearchField onSearch={(e)=>setUsersQuery(e)} inputPlaceholder="Find user"/>
                         <TableComponent headers={headers} rows={list} handleChange={(p,f,s)=>handleChange(p,f,s)}/>
-                    </div>
+                        </div>
+                    }
                 </>
                 :
                 <></>

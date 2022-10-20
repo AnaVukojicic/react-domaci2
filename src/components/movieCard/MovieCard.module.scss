@@ -1,70 +1,89 @@
 .movie-card{
+    background-position: 50%;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
+    width:50vw;
+    height: 50vh;
+    position: relative;
     width: 100%;
-    display: flex;
-    font-size: 21px;
-    .img-div{
-        background-color: rgba(0,0,0,0.9);
-        transition: 2s ease-in-out;
-        transform: translate(0,0);
-        img{
-            transition: 2s ease-in-out;
-            height: 300px;
-            width: auto;
-            border-radius: 45%;
-        }
-    }
-    .content-div{
-        width: 100%;
-        padding: 20px;
-        background-color: rgba(0,0,0,0.9);
-        color: white;
-        text-align: end;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
-        .info{
-            display: flex;
-            justify-content: space-around;
-            p{
-                margin: 0 25px;
+    &:hover{
+        background-image: linear-gradient(black,black) !important;
+        .content-div{
+            transform: translate(-50%,0);
+            img{
+                transform: translate(-50%);
             }
         }
-        div{
-            transition: ease-in-out 2s;
+    }
+}
+
+.content-div{
+    width: 50%;
+    height: 100%;
+    position: absolute;
+    left: 50%;
+    color:white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: 2s ease-in-out;
+    .title{
+        font-size: 2em;
+        padding: 15px 0;
+        text-align: center;
+        p{
+            margin: auto;
         }
     }
-    .button{
-        border-radius: 15px;
-        background-color: rgb(68, 68, 5);
+    .actors{
+        font-size:1.3em;
+        padding: 10px;
         text-align: center;
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
-    }
-    .trailerButton{
-        background-color: red;
-        border-radius: 15px;
-        padding: 10px;
-        font-size: 16px;
-        cursor: pointer;
+        p{
+            margin: auto;
+        }
     }
     .buttons{
         display: flex;
-        justify-content: space-between;
-        button{
-            margin: 0 25px;
+        justify-content: space-around;
+        padding: 10px 0;
+        .trailer-button,.user-button{
+            border: 0;
+            font-size: 1.2em;
+            font-weight: bold;
+            text-transform: uppercase;
+            border-radius: 35px;
+            padding: 3%;
+        }
+        .trailer-button{
+            color:white;
+            background-color: rgb(186, 31, 31);
+            &:hover{
+                background-color: rgb(74, 17, 17);
+                border: 1px solid white;
+            }
+        }
+        .user-button{
+            color:black;
+            background-color: rgb(201, 197, 8);
+            &:hover{
+                background-color: rgb(166, 166, 19);
+                border: 1px solid white;
+            }
         }
     }
-    &:hover{
+    .info{
+        display: flex;
+        padding: 10px 0;
+        justify-content: space-around;
+        flex-direction: row-reverse;
+    }
+    .img-div{
+        height: 100%;
+        position: absolute;
+        left: -100%;
         img{
-            transform: scale(1.5) translate(-13vw);
-            border-radius: 0;
-        }
-        .content-div{
-            div{
-                transform: scale(1) translate(-6vw);
-            }
+            height: 100%;
         }
     }
 }

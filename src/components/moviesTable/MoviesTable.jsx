@@ -9,7 +9,7 @@ import { Modal } from "antd";
 import './MoviesTable.css'
 
 const MoviesTable=()=>{
-    const {setSelectedMovie,usersDivRef}=useAppData();
+    const {setSelectedMovie,setShowUsers}=useAppData();
     const [sortedInfo, setSortedInfo] = useState({});
     const [isModalOpen, setIsModalOpen] = useState(false);
     const [list,setList]=useState(listOfMovies);
@@ -62,14 +62,10 @@ const MoviesTable=()=>{
     const handleChange=(pagination,filters,sorter)=>{
         setSortedInfo(sorter);
     }
-
-    const handleOk = () => {
-        setIsModalOpen(false);
-      };
     
     const handleCancel = () => {
         setIsModalOpen(false);
-        usersDivRef.current.style.display='none';
+        setShowUsers(false);
     };
 
     return(
@@ -83,9 +79,9 @@ const MoviesTable=()=>{
             <Modal maskClosable={false} 
                     centered width={"50%"} 
                     title="Info" 
-                    open={isModalOpen} 
-                    onOk={handleOk} 
+                    open={isModalOpen}
                     onCancel={handleCancel}
+                    footer={null}
             >
                 <SelectedMovie/>
             </Modal>
